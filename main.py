@@ -20,9 +20,6 @@ class Game():
                 if event.type == pygame.QUIT:
                     run = False
                     
-            self.screen.blit(self.background, (0, 0))
-            pygame.draw.rect(self.screen, (255, 255, 0), self.player)
-            
             key = pygame.key.get_pressed()
             if key[pygame.K_w] and self.player.y > 0:
                 self.player.y -= 5
@@ -35,6 +32,9 @@ class Game():
 
             if key[pygame.K_d] and self.player.x < 780:
                 self.player.x += 5
+                    
+            self.screen.blit(self.background, (0, 0))
+            pygame.draw.rect(self.screen, (255, 255, 0), self.player)
                 
             pygame.display.update()
             
