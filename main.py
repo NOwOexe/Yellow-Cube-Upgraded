@@ -1,4 +1,5 @@
 import pygame
+from player import *
 
 class Game():
     
@@ -6,7 +7,8 @@ class Game():
         pygame.init()
         pygame.display.set_caption("Yellow Cube")
         self.screen = pygame.display.set_mode((800, 600))
-        self.player = self.player = pygame.Rect(400, 300, 20, 20)
+        self.player = pygame.Rect(400, 300, 20, 20)
+        self.player = Player(self.player, self.screen)
         self.background = pygame.image.load("image.png")
         self.background = pygame.transform.scale(self.background, (800, 600))
         
@@ -20,21 +22,9 @@ class Game():
                 if event.type == pygame.QUIT:
                     run = False
                     
-            key = pygame.key.get_pressed()
-            if key[pygame.K_w] and self.player.y > 0:
-                self.player.y -= 5
-            
-            if key[pygame.K_s] and self.player.y < 580:
-                self.player.y += 5
-
-            if key[pygame.K_a] and self.player.x > 0:
-                self.player.x -= 5
-
-            if key[pygame.K_d] and self.player.x < 780:
-                self.player.x += 5
-                    
             self.screen.blit(self.background, (0, 0))
-            pygame.draw.rect(self.screen, (255, 255, 0), self.player)
+            self.player.draw_player(400, 300)
+            self.player.move()
                 
             pygame.display.update()
             
