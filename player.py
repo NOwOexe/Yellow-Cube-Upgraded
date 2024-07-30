@@ -5,7 +5,7 @@ class Player():
     def __init__(self, screen, x, y, w, h) -> None:
         self.player_rect = pygame.Rect(x, y, w, h)
         self.screen = screen
-        self.velocity = 250
+        self.velocity = 260
         
     def draw_player(self, x, y):
         pygame.draw.rect(self.screen, (255, 255, 0), (self.player_rect.x, self.player_rect.y,
