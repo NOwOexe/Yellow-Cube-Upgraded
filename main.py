@@ -1,7 +1,6 @@
 import pygame
 import random
 from player import *
-from enemy import *
 
 class Game():
     
@@ -12,7 +11,6 @@ class Game():
         self.player = pygame.Rect(400, 300, 20, 20)
         self.player = Player(self.player, self.screen)
         self.enemy = pygame.Rect(random.randint(0, 800), 0, 20, 20)
-        self.enemy = Enemy(self.enemy, self.screen)
         self.background = pygame.image.load("image.png")
         self.background = pygame.transform.scale(self.background, (800, 600))
         
