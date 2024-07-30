@@ -10,7 +10,6 @@ class Game():
         self.screen = pygame.display.set_mode((800, 600))
         self.player = pygame.Rect(400, 300, 20, 20)
         self.player = Player(self.player, self.screen)
-        self.enemy = pygame.Rect(random.randint(0, 800), 0, 20, 20)
         self.background = pygame.image.load("image.png")
         self.background = pygame.transform.scale(self.background, (800, 600))
         
