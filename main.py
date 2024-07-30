@@ -1,5 +1,4 @@
 import pygame
-import random
 from player import *
 
 class Game():
@@ -25,7 +24,6 @@ class Game():
                     
             self.screen.blit(self.background, (0, 0))
             self.player.draw_player(400, 300)
-            self.enemy.draw_enemy(random.randint(0, 800), 0)
             self.player.move()
                 
             pygame.display.update()
