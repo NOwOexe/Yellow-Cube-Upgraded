@@ -22,20 +22,25 @@ class Game():
         run = True
         while run:
             self.screen.fill((0, 0, 0))
-            self.draw_text = self.font.render(f"Yellow Cube", True, (255, 255, 0))
-            self.draw_text2 = self.font.render(f"Press Spacebar To Continue.", True, (255, 255, 0))
-            text_w, text_h = self.draw_text.get_width(), self.draw_text.get_height() + 150
-            text2_w, text2_h = self.draw_text2.get_width(), self.draw_text2.get_height()
-            self.screen.blit(self.draw_text, ((self.screen.get_width() - text_w) // 2, (self.screen.get_height() - text_h) // 2))
-            self.screen.blit(self.draw_text2, ((self.screen.get_width() - text2_w) // 2, (self.screen.get_height() - text2_h) // 2))
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    run = False
+            draw_text = self.font.render(f"Yellow Cube", True, (255, 255, 0))
+            draw_text2 = self.font.render(f"Press Spacebar To Continue.", True, (255, 255, 0))
+            text_w, text_h = draw_text.get_width(), draw_text.get_height() + 150
+            text2_w, text2_h = draw_text2.get_width(), draw_text2.get_height()
+            self.screen.blit(draw_text, ((self.screen.get_width() - text_w) // 2, (self.screen.get_height() - text_h) // 2))
+            self.screen.blit(draw_text2, ((self.screen.get_width() - text2_w) // 2, (self.screen.get_height() - text2_h) // 2))
+                    
             key = pygame.key.get_pressed()
             if key[pygame.K_SPACE]:
                 run = False
                 game.run()
+            
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    run = False
+                
             pygame.display.update()
+            
+        pygame.quit()
         
     def run(self):
         run = True
@@ -52,7 +57,7 @@ class Game():
             self.player.move(delta_time)
             self.draw_text = self.font.render(f"Score: {self.score}", True, (255, 255, 0))
             self.screen.blit(self.draw_text, (20, 20))
-                
+            
             pygame.display.update()
             
         pygame.quit()
