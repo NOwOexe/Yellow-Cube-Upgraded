@@ -12,12 +12,13 @@ class Game():
                                 player_w, player_h)
         self.background = pygame.image.load("background.png").convert_alpha()
         self.background = pygame.transform.scale(self.background, (800, 600))
+        self.clock = pygame.time.Clock()
         
     def run(self):
         run = True
         while run:
             
-            pygame.time.delay(20)
+            delta_time = self.clock.tick(60) / 1000
             
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -25,7 +26,7 @@ class Game():
                     
             self.screen.blit(self.background, (0, 0))
             self.player.draw_player(400, 300)
-            self.player.move()
+            self.player.move(delta_time)
                 
             pygame.display.update()
             
