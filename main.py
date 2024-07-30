@@ -13,6 +13,8 @@ class Game():
         self.background = pygame.image.load("background.png").convert_alpha()
         self.background = pygame.transform.scale(self.background, (800, 600))
         self.clock = pygame.time.Clock()
+        self.score = 0
+        self.font = pygame.font.Font("SuperPixel-m2L8j.ttf", 20)
         
     def run(self):
         run = True
@@ -27,6 +29,8 @@ class Game():
             self.screen.blit(self.background, (0, 0))
             self.player.draw_player(400, 300)
             self.player.move(delta_time)
+            self.draw_text = self.font.render(f"Score: {self.score}", True, (0, 0, 0))
+            self.screen.blit(self.draw_text, (20, 20))
                 
             pygame.display.update()
             
