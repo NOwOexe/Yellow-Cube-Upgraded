@@ -7,9 +7,10 @@ class Game():
         pygame.init()
         pygame.display.set_caption("Yellow Cube")
         self.screen = pygame.display.set_mode((800, 600))
-        self.player = pygame.Rect(400, 300, 20, 20)
-        self.player = Player(self.player, self.screen)
-        self.background = pygame.image.load("image.png")
+        player_w, player_h = 20, 20
+        self.player = Player(self.screen, (self.screen.get_width() - player_w) // 2, (self.screen.get_height() - player_h) // 2,
+                                player_w, player_h)
+        self.background = pygame.image.load("background.png").convert_alpha()
         self.background = pygame.transform.scale(self.background, (800, 600))
         
     def run(self):
