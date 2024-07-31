@@ -19,8 +19,19 @@ class Game():
         self.font = pygame.font.Font("SuperPixel-m2L8j.ttf", 20)
         
     def start_menu(self):
+        
         run = True
         while run:
+            
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    run = False
+            
+            key = pygame.key.get_pressed()
+            if key[pygame.K_SPACE]:
+                run = False
+                game.run()
+            
             self.screen.fill((0, 0, 0))
             draw_text = self.font.render(f"Yellow Cube", True, (255, 255, 0))
             draw_text2 = self.font.render(f"Press Spacebar To Continue.", True, (255, 255, 0))
@@ -28,18 +39,9 @@ class Game():
             text2_w, text2_h = draw_text2.get_width(), draw_text2.get_height()
             self.screen.blit(draw_text, ((self.screen.get_width() - text_w) // 2, (self.screen.get_height() - text_h) // 2))
             self.screen.blit(draw_text2, ((self.screen.get_width() - text2_w) // 2, (self.screen.get_height() - text2_h) // 2))
-                    
-            key = pygame.key.get_pressed()
-            if key[pygame.K_SPACE]:
-                run = False
-                game.run()
-            
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    run = False
                 
             pygame.display.update()
-            
+        
         pygame.quit()
         
     def run(self):
