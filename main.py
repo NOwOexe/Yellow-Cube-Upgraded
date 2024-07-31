@@ -69,7 +69,7 @@ class Game():
             pygame.display.update()
         
     def enemy_pos(self):
-        total_enemy = 1
+        total_enemy = 5
         enemy_w = 50
         enemy_h = 50
         y_pos = 0
