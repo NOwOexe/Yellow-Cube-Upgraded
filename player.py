@@ -13,14 +13,14 @@ class Player():
         
     def move(self, delta_time):
         key = pygame.key.get_pressed()
-        if key[pygame.K_w] and self.player_rect.x > 0:
+        if key[pygame.K_w] and self.player_rect.y >= 2:
             self.player_rect.y -= self.velocity * delta_time
         
-        if key[pygame.K_s] and self.player_rect.y < 580:
+        if key[pygame.K_s] and self.player_rect.y < 575:
             self.player_rect.y += self.velocity * delta_time
 
-        if key[pygame.K_a] and self.player_rect.x > 0:
+        if key[pygame.K_a] and self.player_rect.x > 2:
             self.player_rect.x -= self.velocity * delta_time
 
-        if key[pygame.K_d] and self.player_rect.x < 780:
+        if key[pygame.K_d] and self.player_rect.x < 775:
             self.player_rect.x += self.velocity * delta_time
