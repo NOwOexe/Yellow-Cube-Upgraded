@@ -1,5 +1,7 @@
 import pygame
+import random
 from player import *
+from enemy import *
 
 class Game():
     
@@ -10,6 +12,7 @@ class Game():
         player_w, player_h = 20, 20
         self.player = Player(self.screen, (self.screen.get_width() - player_w) // 2, (self.screen.get_height() - player_h) // 2,
                                 player_w, player_h)
+        self.enemy: list[Enemy] = self.enemy_pos()
         self.background = pygame.image.load("background.png").convert_alpha()
         self.background = pygame.transform.scale(self.background, (800, 600))
         self.clock = pygame.time.Clock()
@@ -19,7 +22,6 @@ class Game():
         self.font = pygame.font.Font("SuperPixel-m2L8j.ttf", 20)
         
     def start_menu(self):
-        
         run = True
         while run:
             
@@ -55,14 +57,33 @@ class Game():
                     run = False
                     
             self.screen.blit(self.background, (0, 0))
-            self.player.draw_player(400, 300)
+            self.player.draw_player()
             self.player.move(delta_time)
             self.draw_text = self.font.render(f"Score: {self.score}", True, (255, 255, 0))
             self.screen.blit(self.draw_text, (20, 20))
             
-            pygame.display.update()
+            for enemy in self.enemy:
+                enemy.draw()
+                enemy.move(delta_time)
             
-        pygame.quit()
+            pygame.display.update()
+        
+    def enemy_pos(self):
+        total_enemy = 1
+        enemy_w = 50
+        enemy_h = 50
+        y_pos = 0
+        lst = []
+        
+        for i in range(total_enemy):
+            random_x = random.randint(0, 1)
+            if random_x == 0:
+                x_pos = -enemy_w - random.randint(0, 400)
+            elif random_x == 1:
+                x_pos = self.screen.get_width() + enemy_w + random.randint(0, 400)
+            lst.append(Enemy(self.screen, x_pos, y_pos + (enemy_h + 5) * i, enemy_w, enemy_h))
+            
+        return lst
         
 if __name__ == "__main__":
     game = Game()
