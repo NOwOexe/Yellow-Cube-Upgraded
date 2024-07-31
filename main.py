@@ -36,7 +36,7 @@ class Game():
             
             self.screen.fill((0, 0, 0))
             draw_text = self.font.render(f"Yellow Cube", True, (255, 255, 0))
-            draw_text2 = self.font.render(f"Press Spacebar To Continue.", True, (255, 255, 0))
+            draw_text2 = self.font.render(f"Press Spacebar To Continue.", True, (255, 255, 255))
             text_w, text_h = draw_text.get_width(), draw_text.get_height() + 150
             text2_w, text2_h = draw_text2.get_width(), draw_text2.get_height()
             self.screen.blit(draw_text, ((self.screen.get_width() - text_w) // 2, (self.screen.get_height() - text_h) // 2))
