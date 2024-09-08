@@ -1,23 +1,20 @@
 import pygame
-import random
 
 class Enemy():
     
-    def __init__(self, screen, x, y, w, h) -> None:
+    def __init__(self, screen, x, y, w, h, color, velocity) -> None:
         self.screen = screen
         self.enemy_rect = pygame.Rect(x, y, w, h)
-        self.velocity = 100
+        self.color = color
+        self.velocity = velocity
         self.move_right = False
         self.move_left = False
         self.direction()
         
     def draw(self):
-        r_channel = random.randint(0, 255)
-        g_channel = random.randint(0, 255)
-        b_channel = random.randint(0, 255)
         
-        pygame.draw.rect(self.screen, (r_channel, b_channel, g_channel), (self.enemy_rect.x, self.enemy_rect.y,
-                                                                          self.enemy_rect.x, self.enemy_rect.h))
+        pygame.draw.rect(self.screen, self.color, (self.enemy_rect.x, self.enemy_rect.y,
+                                                                          self.enemy_rect.w, self.enemy_rect.h))
         
     def direction(self):
         if self.enemy_rect.x < self.screen.get_width():
